@@ -1,0 +1,37 @@
+
+<h1>My Tasks</h1>
+
+<% @tasks.each do |task| %>
+
+<div class = "d-flex p-1 m-2 inline-bloc">
+
+  <% if task.completed?  %>
+
+  <h2> <i class="far fa-check-square"></i> <%= link_to task.title, task_path(task) %>
+  </h2>
+
+  <h4 class = "d-flex m-3 inline-bloc"> <%= link_to "<i class='far fa-edit'></i>".html_safe, edit_path(task) %>
+  </h4>
+
+  <h4 class = "d-flex m-3 inline-bloc"> <%= link_to "<i class='fas fa-trash'></i>".html_safe, task_path(task),method: :delete, data: { confirm: "Are you sure?" } %>
+  </h4>
+
+  <% else %>
+
+  <h2> <i class="far fa-square"></i> <%= link_to task.title, task_path(task) %>
+    </h2>
+
+  <h4 class = "d-flex m-3 inline-bloc"><%= link_to "<i class='far fa-edit'></i>".html_safe, edit_path(task) %>
+  </h4>
+
+  <h4 class = "d-flex m-3 inline-bloc"> <%= link_to "<i class='fas fa-trash'></i>".html_safe, task_path(task), method: :delete, data: { confirm: "Are you sure?" } %>
+  </h4>
+
+  <% end %>
+
+</div>
+<% end %>
+
+
+<%= link_to "add a new task", new_path %>
+
